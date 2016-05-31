@@ -4,12 +4,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELibrary.Web", "ELibrary.Web\ELibrary.Web.csproj", "{5A31C578-57DC-4328-AFDD-5356CAA432E9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{84DB82F7-EB84-42B3-ABE9-11BC088F845C} = {84DB82F7-EB84-42B3-ABE9-11BC088F845C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELibrary.API", "ELibrary.API\ELibrary.API.csproj", "{55FD241B-8226-431D-B009-3B93AFD6270E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELibrary.Model", "ELibrary.Model\ELibrary.Model.csproj", "{CC40EBBC-63EE-450A-84D4-188E706BE3DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELibrary.Data", "ELibrary.Data\ELibrary.Data.csproj", "{84DB82F7-EB84-42B3-ABE9-11BC088F845C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CC40EBBC-63EE-450A-84D4-188E706BE3DC} = {CC40EBBC-63EE-450A-84D4-188E706BE3DC}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELibrary.Service", "ELibrary.Service\ELibrary.Service.csproj", "{B7DFCEAD-D8A3-4EC8-914E-6F2F271DF7AD}"
 EndProject

@@ -14,7 +14,7 @@ namespace ELibrary.Model.Models
         public string Description { get; set; }
         public int PublishYear { get; set; }
         public string Snapshot { get; set; }
-        public float Price { get; set; }
+        public decimal Price { get; set; }
         public bool Retired { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

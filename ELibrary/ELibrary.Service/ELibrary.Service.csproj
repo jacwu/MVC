@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ELibrary.Data\ELibrary.Data.csproj">
+      <Project>{84db82f7-eb84-42b3-abe9-11bc088f845c}</Project>
+      <Name>ELibrary.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ELibrary.Model\ELibrary.Model.csproj">
+      <Project>{cc40ebbc-63ee-450a-84d4-188e706be3dc}</Project>
+      <Name>ELibrary.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

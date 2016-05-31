@@ -11,8 +11,12 @@ namespace ELibrary.Web
     {
         protected void Application_Start()
         {
+            System.Data.Entity.Database.SetInitializer<ELibrary.Data.ELibraryEntities>(null);
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            Bootstrapper.Run();
         }
     }
 }
