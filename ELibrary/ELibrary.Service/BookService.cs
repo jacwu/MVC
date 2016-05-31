@@ -11,6 +11,9 @@ namespace ELibrary.Service
     public interface IBookService
     {
         IEnumerable<Book> GetBooks();
+        void CreateBook(Book book);
+
+        void Commit();
     }
     public class BookService: IBookService
     {
@@ -24,6 +27,16 @@ namespace ELibrary.Service
         public IEnumerable<Book> GetBooks()
         {
             return this.bookRepository.GetAll();
+        }
+
+        public void CreateBook(Book book)
+        {
+            this.bookRepository.Add(book);
+        }
+
+        public void Commit()
+        {
+            this.bookRepository.Commit();
         }
     }
 }

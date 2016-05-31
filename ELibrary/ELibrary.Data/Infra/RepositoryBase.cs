@@ -69,6 +69,11 @@ namespace ELibrary.Data
             return dbSet.Where(where).FirstOrDefault<T>();
         }
 
+        public virtual void Commit()
+        {
+            DbContext.SaveChanges();
+        }
+
         #endregion
     
     }
