@@ -8,6 +8,10 @@ namespace ELibrary.Model.Models
 {
     public class Tag
     {
+        public Tag()
+        {
+            Books = new List<Book>();
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public int Rating { get; set; }

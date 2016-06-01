@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ELibraryDbSeed.cs" />
     <Compile Include="ELibraryEntities.cs" />
     <Compile Include="Infra\DbFactory.cs" />
     <Compile Include="Infra\Disposable.cs" />
@@ -57,11 +58,12 @@
     <Compile Include="Infra\IUnitOfWork.cs" />
     <Compile Include="Infra\RepositoryBase.cs" />
     <Compile Include="Infra\UnitOfWork.cs" />
-    <Compile Include="Migrations\201605302305166_initial.cs" />
-    <Compile Include="Migrations\201605302305166_initial.Designer.cs">
-      <DependentUpon>201605302305166_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201606011244228_initial.cs" />
+    <Compile Include="Migrations\201606011244228_initial.Designer.cs">
+      <DependentUpon>201606011244228_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Configuration2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BookRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
@@ -78,8 +80,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605302305166_initial.resx">
-      <DependentUpon>201605302305166_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606011244228_initial.resx">
+      <DependentUpon>201606011244228_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

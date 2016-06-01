@@ -11,6 +11,10 @@ namespace ELibrary.Service
     public interface ITagService
     {
         void CreateTag(Tag tag);
+
+        IEnumerable<Tag> GetTags();
+
+        Tag GetTag(int id);
     }
     public class TagService : ITagService
     {
@@ -26,5 +30,14 @@ namespace ELibrary.Service
             this.tagRepository.Add(tag);
         }
 
+        public IEnumerable<Tag> GetTags()
+        {
+            return tagRepository.GetAll();
+        }
+
+        public Tag GetTag(int id)
+        {
+            return tagRepository.GetById(id);
+        }
     }
 }

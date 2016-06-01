@@ -1,4 +1,4 @@
-﻿@model ELibrary.Model.Models.Book
+﻿@model ELibrary.Web.ViewModels.BookEditViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -72,6 +72,17 @@
                 </div>
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TagId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.DropDownListFor(model => model.TagId, Model.TagOptionItems)
+                    
+                </div>
+            </div>
+        </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

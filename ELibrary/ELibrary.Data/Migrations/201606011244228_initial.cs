@@ -19,8 +19,11 @@ namespace ELibrary.Data.Migrations
                         Snapshot = c.String(),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Retired = c.Boolean(nullable: false),
+                        Tag_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Tags", t => t.Tag_Id)
+                .Index(t => t.Tag_Id);
             
             CreateTable(
                 "dbo.Orders",
@@ -46,30 +49,14 @@ namespace ELibrary.Data.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
-            CreateTable(
-                "dbo.TagBooks",
-                c => new
-                    {
-                        Tag_Id = c.Int(nullable: false),
-                        Book_Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Tag_Id, t.Book_Id })
-                .ForeignKey("dbo.Tags", t => t.Tag_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Books", t => t.Book_Id, cascadeDelete: true)
-                .Index(t => t.Tag_Id)
-                .Index(t => t.Book_Id);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.TagBooks", "Book_Id", "dbo.Books");
-            DropForeignKey("dbo.TagBooks", "Tag_Id", "dbo.Tags");
+            DropForeignKey("dbo.Books", "Tag_Id", "dbo.Tags");
             DropForeignKey("dbo.Orders", "Book_Id", "dbo.Books");
-            DropIndex("dbo.TagBooks", new[] { "Book_Id" });
-            DropIndex("dbo.TagBooks", new[] { "Tag_Id" });
             DropIndex("dbo.Orders", new[] { "Book_Id" });
-            DropTable("dbo.TagBooks");
+            DropIndex("dbo.Books", new[] { "Tag_Id" });
             DropTable("dbo.Tags");
             DropTable("dbo.Orders");
             DropTable("dbo.Books");

@@ -1,9 +1,12 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using AutoMapper;
 using ELibrary.Data;
 using ELibrary.Data.Infra;
 using ELibrary.Data.Repositories;
+using ELibrary.Model.Models;
 using ELibrary.Service;
+using ELibrary.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +21,17 @@ namespace ELibrary.Web
         public static void Run()
         {
             SetAutofacContainer();
-            
+
+            ConfigAutoMapper();
+
+        }
+
+        private static void ConfigAutoMapper()
+        {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<BookEditViewModel, Book>();
+            });
         }
 
         private static void SetAutofacContainer()
