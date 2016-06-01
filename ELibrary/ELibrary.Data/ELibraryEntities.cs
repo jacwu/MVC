@@ -16,10 +16,10 @@ namespace ELibrary.Data
         {
         }
 
-        //public virtual void Commit()
-        //{
-        //    base.SaveChanges();
-        //}
+        public virtual void Commit()
+        {
+            base.SaveChanges();
+        }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

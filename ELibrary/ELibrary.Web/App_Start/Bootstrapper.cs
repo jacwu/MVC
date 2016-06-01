@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using ELibrary.Data;
+using ELibrary.Data.Infra;
+using ELibrary.Data.Repositories;
 using ELibrary.Service;
 using System;
 using System.Collections.Generic;
@@ -23,8 +25,8 @@ namespace ELibrary.Web
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
-            //builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            //builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
+            builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
 
             // Repositories
             builder.RegisterAssemblyTypes(typeof(BookRepository).Assembly)

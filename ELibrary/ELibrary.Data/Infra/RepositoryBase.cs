@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ELibrary.Data
+namespace ELibrary.Data.Infra
 {
     public abstract class RepositoryBase<T> where T : class
     {
@@ -14,14 +14,21 @@ namespace ELibrary.Data
         private ELibraryEntities dataContext;
         private readonly IDbSet<T> dbSet;
 
+        protected IDbFactory DbFactory
+        {
+            get;
+            private set;
+        }
+
         protected ELibraryEntities DbContext
         {
-            get { return dataContext ?? (dataContext = new ELibraryEntities()); }
+            get { return dataContext ?? (dataContext = DbFactory.Init()); }
         }
         #endregion
 
-        protected RepositoryBase()
+        protected RepositoryBase(IDbFactory dbFactory)
         {
+            DbFactory = dbFactory;
             dbSet = DbContext.Set<T>();
         }
 
@@ -67,11 +74,6 @@ namespace ELibrary.Data
         public T Get(Expression<Func<T, bool>> where)
         {
             return dbSet.Where(where).FirstOrDefault<T>();
-        }
-
-        public virtual void Commit()
-        {
-            DbContext.SaveChanges();
         }
 
         #endregion

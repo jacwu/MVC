@@ -6,19 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ELibrary.Data.Repositories
+namespace ELibrary.Data
 {
-    public interface IBookRepository : IRepository<Book>
+    public interface ITagRepository : IRepository<Tag>
     {
     }
 
-    public class BookRepository : RepositoryBase<Book>, IBookRepository
+    public class TagRepository : RepositoryBase<Tag>, ITagRepository
     {
-        public BookRepository(IDbFactory dbFactory)
+        public TagRepository(IDbFactory dbFactory)
             : base(dbFactory) { }
 
-        
+
     }
-
-
 }

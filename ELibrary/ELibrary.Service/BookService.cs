@@ -1,4 +1,5 @@
 ﻿using ELibrary.Data;
+using ELibrary.Data.Repositories;
 using ELibrary.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,6 @@ namespace ELibrary.Service
     {
         IEnumerable<Book> GetBooks();
         void CreateBook(Book book);
-
-        void Commit();
     }
     public class BookService: IBookService
     {
@@ -34,9 +33,5 @@ namespace ELibrary.Service
             this.bookRepository.Add(book);
         }
 
-        public void Commit()
-        {
-            this.bookRepository.Commit();
-        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ELibrary.Model.Models;
+﻿using ELibrary.Data.Infra;
+using ELibrary.Model.Models;
 using ELibrary.Service;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace ELibrary.Web.Controllers
     public class BooksController : Controller
     {
         private IBookService bookService;
+        private IUnitOfWork unitOfWork;
 
-        public BooksController(IBookService bookService)
+        public BooksController(IBookService bookService, IUnitOfWork unitOfWork)
         {
             this.bookService = bookService;
+            this.unitOfWork = unitOfWork;
         }
 
         // GET: Home
@@ -36,7 +39,8 @@ namespace ELibrary.Web.Controllers
             if (ModelState.IsValid)
             {
                 this.bookService.CreateBook(book);
-                this.bookService.Commit();
+                this.unitOfWork.Commit();
+                
                 return RedirectToAction("Index");
             }
 

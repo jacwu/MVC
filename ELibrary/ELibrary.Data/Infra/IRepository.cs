@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ELibrary.Data
+namespace ELibrary.Data.Infra
 {
     public interface IRepository<T> where T : class
     {
@@ -24,7 +24,5 @@ namespace ELibrary.Data
         IEnumerable<T> GetAll();
         // Gets entities using delegate
         IEnumerable<T> GetMany(Expression<Func<T, bool>> where);
-
-        void Commit();
     }
 }

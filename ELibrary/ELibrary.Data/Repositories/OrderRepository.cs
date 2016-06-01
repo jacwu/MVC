@@ -8,17 +8,15 @@ using System.Threading.Tasks;
 
 namespace ELibrary.Data.Repositories
 {
-    public interface IBookRepository : IRepository<Book>
+    public interface IOrderRepository : IRepository<Order>
     {
     }
 
-    public class BookRepository : RepositoryBase<Book>, IBookRepository
+    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     {
-        public BookRepository(IDbFactory dbFactory)
+        public OrderRepository(IDbFactory dbFactory)
             : base(dbFactory) { }
 
-        
+
     }
-
-
 }
