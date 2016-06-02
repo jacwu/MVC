@@ -26,8 +26,8 @@ namespace ELibrary.Web.ViewModels
         [Display(Name = "Publish Year")]
         public int PublishYear { get; set; }
 
-        [Required]
-        public string Snapshot { get; set; }
+        [Display(Name = "Cover")]
+        public HttpPostedFileBase CoverImg { get; set; }
 
         [Required]
         public decimal Price { get; set; }

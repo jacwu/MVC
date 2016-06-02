@@ -178,7 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
+    <Folder Include="Content\BookImg\" />
+    <Folder Include="Content\TagImg\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ELibrary.Data\ELibrary.Data.csproj">

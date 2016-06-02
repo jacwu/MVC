@@ -57,12 +57,25 @@ namespace ELibrary.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Book book = Mapper.Map<Book>(bookViewModel);
-                book.Tag = this.tagService.GetTag(bookViewModel.TagId);
-                this.bookService.CreateBook(book);
-                this.unitOfWork.Commit();
-                
-                return RedirectToAction("Index");
+                if (null != bookViewModel.CoverImg)
+                {
+                    string uploadedPic = System.IO.Path.GetFileName(bookViewModel.CoverImg.FileName);
+                    string localPath = System.IO.Path.Combine(Server.MapPath("~/Content/BookImg"), uploadedPic);
+                    bookViewModel.CoverImg.SaveAs(localPath);
+
+                    Book book = Mapper.Map<Book>(bookViewModel);
+                    book.Tag = this.tagService.GetTag(bookViewModel.TagId);
+                    book.Snapshot = uploadedPic;
+                    this.bookService.CreateBook(book);
+
+                    this.unitOfWork.Commit();
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("screenshot", "cover image is needed");
+                }
             }
 
             return View(bookViewModel);
