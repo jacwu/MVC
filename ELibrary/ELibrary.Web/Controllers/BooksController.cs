@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ELibrary.Data.Infra;
-using ELibrary.Model.Models;
+using ELibrary.Model.Entities;
 using ELibrary.Service;
 using ELibrary.Web.ViewModels;
 using System;

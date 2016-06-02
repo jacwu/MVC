@@ -1,5 +1,5 @@
 ﻿using ELibrary.Data.Infra;
-using ELibrary.Model.Models;
+using ELibrary.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

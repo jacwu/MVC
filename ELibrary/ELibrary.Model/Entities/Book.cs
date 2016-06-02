@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ELibrary.Model.Models
+namespace ELibrary.Model.Entities
 {
     public class Book
     {

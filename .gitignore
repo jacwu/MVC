@@ -52,3 +52,7 @@ report_output
 bin
 obj
 packages
+*.user
+*.suo
+/.vs/config/applicationhost.config
+/ELibrary/.vs/config/applicationhost.config

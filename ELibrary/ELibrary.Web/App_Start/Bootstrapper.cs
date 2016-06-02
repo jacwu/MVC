@@ -4,7 +4,7 @@ using AutoMapper;
 using ELibrary.Data;
 using ELibrary.Data.Infra;
 using ELibrary.Data.Repositories;
-using ELibrary.Model.Models;
+using ELibrary.Model.Entities;
 using ELibrary.Service;
 using ELibrary.Web.ViewModels;
 using System;

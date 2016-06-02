@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Data.Entity;
-using ELibrary.Model.Models;
+using ELibrary.Model.Entities;
+using ELibrary.Data.Migrations;
 
 namespace ELibrary.Data
 {
     public class ELibraryEntities : DbContext
     {
-
+        static ELibraryEntities()
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ELibraryEntities, Configuration>());
+        }
         public ELibraryEntities() : base("ELibraryDBConnection")
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual void Commit()
