@@ -30,7 +30,7 @@ namespace ELibrary.Web
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<BookEditViewModel, Book>();
+                cfg.CreateMap<BookViewModel, Book>();
             });
         }
 

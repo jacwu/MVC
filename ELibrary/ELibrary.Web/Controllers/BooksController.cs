@@ -40,15 +40,20 @@ namespace ELibrary.Web.Controllers
             //var tag = this.tagService.GetTags().Where(f => f.Name == "C#").FirstOrDefault();
             //bookViewBag.Categories = new MultiSelectList(this.tagService.GetTags(), "Id", "Name", this.bookService.GetBooks().FirstOrDefault().Tags);
 
-            BookEditViewModel viewmodel = new BookEditViewModel();
-            viewmodel.TagOptions = this.tagService.GetTags().ToList();
-            viewmodel.TagId = viewmodel.TagOptions.First().Id;
-            return View(viewmodel);
+            //BookEditViewModel viewmodel = new BookEditViewModel();
+            var items = this.tagService.GetTags().Select(t => new SelectListItem
+            {
+                Value = t.Id.ToString(),
+                Text = t.Name
+            });
+           
+            ViewBag.TagOptions = items;
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(BookEditViewModel bookViewModel)
+        public ActionResult Create(BookViewModel bookViewModel)
         {
             if (ModelState.IsValid)
             {

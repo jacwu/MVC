@@ -1,37 +1,41 @@
 ﻿using ELibrary.Model.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace ELibrary.Web.ViewModels
 {
-    public class BookEditViewModel
+    public class BookViewModel
     {
-        public int Id { get; set; }
+        [Required]
         public string Title { get; set; }
+
+        [Required]
+        [Display(Name = "Author Name")]
         public string AuthorName { get; set; }
+
+        [Required]
+        [StringLength(50, MinimumLength = 10)]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
+        [Required]
+        [Display(Name = "Publish Year")]
         public int PublishYear { get; set; }
+
+        [Required]
         public string Snapshot { get; set; }
+
+        [Required]
         public decimal Price { get; set; }
-        public bool Retired { get; set; }
+
+        [Required]
+        [Display(Name = "Category")]
         public int TagId { get; set; }
 
-        public List<Tag> TagOptions { get; set; }
-        public IEnumerable<SelectListItem> TagOptionItems
-        {
-            get
-            {
-                var items = TagOptions.Select(t => new SelectListItem
-                {
-                    Value = t.Id.ToString(),
-                    Text = t.Name
-                });
-                return items;
-            }
-        }
 
     }
 }
