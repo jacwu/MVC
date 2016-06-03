@@ -1,0 +1,12 @@
+﻿@model System.Collections.Generic.IEnumerable<ELibrary.Model.Models.TagAssociationModel>
+
+@{ 
+    ViewBag.Title = "Home";
+}
+
+<div class="container">
+    @foreach(var tag in Model)
+    {
+        @Html.Partial("_PartialTag", tag);
+    }
+</div>
