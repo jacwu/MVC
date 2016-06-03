@@ -43,11 +43,9 @@ namespace ELibrary.Data
                 Title = "CLR via C#, Second Edition",
                 AuthorName = "Jeffrey Richter",
                 Description = @"Dig deep and master the intricacies of the common language runtime, C#, and .NET development. Led by programming expert Jeffrey Richter, a longtime consultant to the Microsoft .NET team - you’ll gain pragmatic insights for building robust, reliable, and responsive apps and components.",
-                Price = 39.99m,
                 PublishYear = 2006,
-                Snapshot = "clrviacsharp.jpg",
+                ImageName = "clrviacsharp.jpg",
                 Retired = false
-                //Tag = new Tag { Name = "C#"}
             };
 
             var tag = ctx.Tags.Where(f => f.Name == "C#").FirstOrDefault();
@@ -64,11 +62,9 @@ namespace ELibrary.Data
                 Title = "Code Complete: A Practical Handbook of Software Construction, Second Edition",
                 AuthorName = "Steve McConnell",
                 Description = @"Widely considered one of the best practical guides to programming, Steve McConnell’s original CODE COMPLETE has been helping developers write better software for more than a decade. Now this classic book has been fully updated and revised with leading-edge practices—and hundreds of new code samples—illustrating the art and science of software construction. Capturing the body of knowledge available from research, academia, and everyday commercial practice, McConnell synthesizes the most effective techniques and must-know principles into clear, pragmatic guidance. No matter what your experience level, development environment, or project size, this book will inform and stimulate your thinking—and help you build the highest quality code.",
-                Price = 34.11m,
                 PublishYear = 2004,
-                Snapshot = "codecomplete.jpg",
+                ImageName = "codecomplete.jpg",
                 Retired = false,
-                //Tag = new Tag { Name = "Software Design & Engineering"}
                 };
 
             tag = ctx.Tags.Where(f => f.Name == "Software Design & Engineering").FirstOrDefault();

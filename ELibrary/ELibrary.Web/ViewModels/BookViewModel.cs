@@ -13,12 +13,11 @@ namespace ELibrary.Web.ViewModels
         [Required]
         public string Title { get; set; }
 
-        [Required]
         [Display(Name = "Author Name")]
         public string AuthorName { get; set; }
 
         [Required]
-        [StringLength(50, MinimumLength = 10)]
+        [StringLength(50, MinimumLength = 5)]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
@@ -27,10 +26,8 @@ namespace ELibrary.Web.ViewModels
         public int PublishYear { get; set; }
 
         [Display(Name = "Cover")]
-        public HttpPostedFileBase CoverImg { get; set; }
-
         [Required]
-        public decimal Price { get; set; }
+        public HttpPostedFileBase CoverImg { get; set; }
 
         [Required]
         [Display(Name = "Category")]

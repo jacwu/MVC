@@ -15,6 +15,7 @@ namespace ELibrary.Model.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public int Rating { get; set; }
+        public string ImageName { get; set; }
         public virtual ICollection<Book> Books { get; set; }
 
     }
