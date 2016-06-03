@@ -57,7 +57,7 @@ namespace ELibrary.Web.Controllers
 
                 Book book = Mapper.Map<Book>(bookViewModel);
                 book.Tags = bookViewModel.TagIds.SelectMany(id => this.tagService.AllTags.Where(tag => tag.Id == id)).ToList();                   
-                book.Snapshot = uploadedPic;
+                book.ImageName = uploadedPic;
                 this.bookService.CreateBook(book);
 
                 this.unitOfWork.Commit();
