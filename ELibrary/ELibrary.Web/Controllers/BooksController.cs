@@ -35,13 +35,9 @@ namespace ELibrary.Web.Controllers
 
         public ActionResult Create()
         {
-            //var v = this.bookService.GetBookwithTag();
+            var v = this.bookService.GetBookwithTag();
 
-            //var tag = this.tagService.GetTags().Where(f => f.Name == "C#").FirstOrDefault();
-            //bookViewBag.Categories = new MultiSelectList(this.tagService.GetTags(), "Id", "Name", this.bookService.GetBooks().FirstOrDefault().Tags);
-
-            //BookEditViewModel viewmodel = new BookEditViewModel();
-            var items = this.tagService.GetTags().Select(t => new SelectListItem
+            var items = this.tagService.AllTags.Select(t => new SelectListItem
             {
                 Value = t.Id.ToString(),
                 Text = t.Name
@@ -64,7 +60,8 @@ namespace ELibrary.Web.Controllers
                     bookViewModel.CoverImg.SaveAs(localPath);
 
                     Book book = Mapper.Map<Book>(bookViewModel);
-                    book.Tag = this.tagService.GetTag(bookViewModel.TagId);
+                    book.Tags = bookViewModel.TagIds.SelectMany(id => this.tagService.AllTags.Where(tag => tag.Id == id)).ToList();
+                    
                     book.Snapshot = uploadedPic;
                     this.bookService.CreateBook(book);
 

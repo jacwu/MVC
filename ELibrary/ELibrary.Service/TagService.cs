@@ -12,12 +12,27 @@ namespace ELibrary.Service
     {
         void CreateTag(Tag tag);
 
-        IEnumerable<Tag> GetTags();
-
         Tag GetTag(int id);
+
+        IEnumerable<Tag> AllTags { get;}
     }
     public class TagService : ITagService
     {
+        private IEnumerable<Tag> allTags;
+        public IEnumerable<Tag> AllTags
+        {
+            get
+            {
+                if(null == allTags)
+                {
+                    allTags = tagRepository.GetAll();
+                }
+
+                return allTags;
+            }
+        }
+
+
         private ITagRepository tagRepository;
 
         public TagService(ITagRepository tagRepository)
@@ -28,11 +43,6 @@ namespace ELibrary.Service
         public void CreateTag(Tag tag)
         {
             this.tagRepository.Add(tag);
-        }
-
-        public IEnumerable<Tag> GetTags()
-        {
-            return tagRepository.GetAll();
         }
 
         public Tag GetTag(int id)

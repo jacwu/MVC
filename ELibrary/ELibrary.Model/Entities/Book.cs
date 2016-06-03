@@ -11,6 +11,7 @@ namespace ELibrary.Model.Entities
         public Book()
         {
             Orders = new List<Order>();
+            Tags = new List<Tag>();
         }
         public int Id { get; set; }
         public string Title { get; set; }
@@ -20,7 +21,7 @@ namespace ELibrary.Model.Entities
         public string Snapshot { get; set; }
         public decimal Price { get; set; }
         public bool Retired { get; set; }
-        public Tag Tag { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 
     }

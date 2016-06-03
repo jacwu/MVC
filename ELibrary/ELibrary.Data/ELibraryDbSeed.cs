@@ -51,8 +51,8 @@ namespace ELibrary.Data
             };
 
             var tag = ctx.Tags.Where(f => f.Name == "C#").FirstOrDefault();
-            
-            book.Tag = tag;
+
+            book.Tags.Add(tag);
 
 
             ctx.Books.Add(book);
@@ -68,12 +68,12 @@ namespace ELibrary.Data
                 PublishYear = 2004,
                 Snapshot = "codecomplete.jpg",
                 Retired = false,
-                Tag = new Tag { Name = "Software Design & Engineering"}
+                //Tag = new Tag { Name = "Software Design & Engineering"}
                 };
 
             tag = ctx.Tags.Where(f => f.Name == "Software Design & Engineering").FirstOrDefault();
-            
-            book.Tag = tag;
+
+            book.Tags.Add(tag);
 
             ctx.Books.Add(book);
 

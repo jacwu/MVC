@@ -34,7 +34,7 @@ namespace ELibrary.Web.ViewModels
 
         [Required]
         [Display(Name = "Category")]
-        public int TagId { get; set; }
+        public IEnumerable<int> TagIds { get; set; }
 
 
     }

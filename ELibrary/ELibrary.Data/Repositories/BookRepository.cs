@@ -20,7 +20,7 @@ namespace ELibrary.Data.Repositories
 
         public IEnumerable<Book> GetBookwithTag()
         {
-            return DbContext.Books.Include("Tag").ToList();
+            return DbContext.Books.Include("Tags").ToList();
         }
     }
 
