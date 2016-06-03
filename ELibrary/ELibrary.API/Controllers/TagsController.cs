@@ -10,7 +10,7 @@ using ELibrary.API.Factories;
 
 namespace ELibrary.API.Controllers
 {
-    [Route("api/library/tags/{id?}", Name ="Tags")]
+    [Route("api/library/tags/{tagId?}", Name ="Tags")]
     public class TagsController : BaseApiController
     {
         private ITagService _tagService;

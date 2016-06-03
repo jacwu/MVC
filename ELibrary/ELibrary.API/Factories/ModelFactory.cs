@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using ELibrary.Model.Entities;
 using ELibrary.Model.Models;
 using System.Web.Http.Routing;
+using ELibrary.Constant;
 
 namespace ELibrary.API.Factories
 {
     class ModelFactory : IModelFactory
     {
-        LinkModel CreateLink(string href, string rel, string method="GET")
+        LinkModel CreateLink(string href, string rel, string method= MethodConstant.GET)
         {
             return new LinkModel
             {
@@ -26,7 +27,7 @@ namespace ELibrary.API.Factories
             {
                 Links = new List<LinkModel>
                 {
-                    CreateLink(urlHelper.Link(routeName, new { }), "SELF")
+                    CreateLink(urlHelper.Link(routeName, new { tagId = tag.Id }), RelConstant.SELF)
                 },
                 Name = tag.Name
             };

@@ -147,6 +147,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ELibrary.Constant\ELibrary.Constant.csproj">
+      <Project>{ef406c97-8135-4525-aa8e-e2355b4e01f4}</Project>
+      <Name>ELibrary.Constant</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ELibrary.Data\ELibrary.Data.csproj">
       <Project>{84db82f7-eb84-42b3-abe9-11bc088f845c}</Project>
       <Name>ELibrary.Data</Name>
