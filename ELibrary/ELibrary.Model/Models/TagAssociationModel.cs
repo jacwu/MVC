@@ -10,6 +10,7 @@ namespace ELibrary.Model.Models
     {
         public ICollection<LinkModel> Links { get; set; }
         public string Name { get; set; }
+        public string ImageName { get; set; }
         public string ImageUrl { get; set; }
     }
 }

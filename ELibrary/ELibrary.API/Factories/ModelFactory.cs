@@ -7,11 +7,20 @@ using ELibrary.Model.Entities;
 using ELibrary.Model.Models;
 using System.Web.Http.Routing;
 using ELibrary.Constant;
+using ELibrary.Service;
 
 namespace ELibrary.API.Factories
 {
     class ModelFactory : IModelFactory
     {
+        private IImageUrlGenerator _imageUrlGenerator;
+        private IImagePrefixProvider _imageUrlPrefixProvider;
+
+        public ModelFactory(IImageUrlGenerator imageUrlGenerator, IImagePrefixProvider imageUrlPrefixProvider)
+        {
+            _imageUrlGenerator = imageUrlGenerator;
+            _imageUrlPrefixProvider = imageUrlPrefixProvider;
+        }
         LinkModel CreateLink(string href, string rel, string method= MethodConstant.GET)
         {
             return new LinkModel
@@ -29,7 +38,9 @@ namespace ELibrary.API.Factories
                 {
                     CreateLink(urlHelper.Link(routeName, new { tagId = tag.Id }), RelConstant.SELF)
                 },
-                Name = tag.Name
+                Name = tag.Name,
+                ImageName = tag.ImageName,
+                ImageUrl = _imageUrlGenerator.CreateTagImageUrl(_imageUrlPrefixProvider.TagImagePrefix(), tag.ImageName)
             };
         }
 
@@ -42,6 +53,8 @@ namespace ELibrary.API.Factories
                     CreateLink(urlHelper.Link(routeName, new { tagId = tag.Id }), RelConstant.SELF)
                 },
                 Name = tag.Name,
+                ImageName = tag.ImageName,
+                ImageUrl = _imageUrlGenerator.CreateTagImageUrl(_imageUrlPrefixProvider.TagImagePrefix(), tag.ImageName),
                 Books = tag.Books.Select(m=>CreateBookAssociationModel(urlHelper, "Books", m))
             };
         }
@@ -55,9 +68,9 @@ namespace ELibrary.API.Factories
                     CreateLink(urlHelper.Link(routeName, new {bookId = book.Id }), RelConstant.SELF)
                 },
                 Title = book.Title,
-                Price = book.Price,
                 Description = book.Description,
-                ImageUrl = book.Snapshot
+                ImageName = book.ImageName,
+                ImageUrl = _imageUrlGenerator.CreateBookImageUrl(_imageUrlPrefixProvider.BookImagePrefix(), book.ImageName)
             };
         }
     }
