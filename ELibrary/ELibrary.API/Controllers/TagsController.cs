@@ -22,7 +22,7 @@ namespace ELibrary.API.Controllers
 
         public IHttpActionResult Get()
         {
-            var route = this.ControllerContext.RouteData.Route;
+            
             var results = _tagService.AllTags.ToList()
                 .Select(t => TheModelFactory.CreateTagAssociationModel(Url, "Tags", t));
 
