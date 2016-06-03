@@ -28,5 +28,16 @@ namespace ELibrary.API.Controllers
 
             return Ok(results);
         }
+
+        public IHttpActionResult Get(int tagId)
+        {
+            var result = _tagService.GetTag(tagId);
+
+            if (result != null)
+                return Ok(TheModelFactory.CreateTagModel(Url, "Tags", result));
+
+
+            return NotFound();
+        }
     }
 }

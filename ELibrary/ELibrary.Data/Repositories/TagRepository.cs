@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace ELibrary.Data
 {
@@ -17,6 +18,9 @@ namespace ELibrary.Data
         public TagRepository(IDbFactory dbFactory)
             : base(dbFactory) { }
 
-
+        public override Tag GetById(int id)
+        {
+            return DbContext.Tags.Include("Books").Where(f=>f.Id==id).FirstOrDefault(); 
+        }
     }
 }
