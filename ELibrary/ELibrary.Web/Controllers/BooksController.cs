@@ -35,13 +35,11 @@ namespace ELibrary.Web.Controllers
 
         public ActionResult Create()
         {
-            var v = this.bookService.GetBookwithTag();
-
             var items = this.tagService.AllTags.Select(t => new SelectListItem
             {
                 Value = t.Id.ToString(),
                 Text = t.Name
-            });
+            }).OrderBy(x=>x.Text);
            
             ViewBag.TagOptions = items;
             return View();
@@ -53,26 +51,19 @@ namespace ELibrary.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (null != bookViewModel.CoverImg)
-                {
-                    string uploadedPic = System.IO.Path.GetFileName(bookViewModel.CoverImg.FileName);
-                    string localPath = System.IO.Path.Combine(Server.MapPath("~/Content/BookImg"), uploadedPic);
-                    bookViewModel.CoverImg.SaveAs(localPath);
+                string uploadedPic = System.IO.Path.GetFileName(bookViewModel.CoverImg.FileName);
+                string localPath = System.IO.Path.Combine(Server.MapPath("~/Content/BookImg"), uploadedPic);
+                bookViewModel.CoverImg.SaveAs(localPath);
 
-                    Book book = Mapper.Map<Book>(bookViewModel);
-                    book.Tags = bookViewModel.TagIds.SelectMany(id => this.tagService.AllTags.Where(tag => tag.Id == id)).ToList();
-                    
-                    book.Snapshot = uploadedPic;
-                    this.bookService.CreateBook(book);
+                Book book = Mapper.Map<Book>(bookViewModel);
+                book.Tags = bookViewModel.TagIds.SelectMany(id => this.tagService.AllTags.Where(tag => tag.Id == id)).ToList();                   
+                book.Snapshot = uploadedPic;
+                this.bookService.CreateBook(book);
 
-                    this.unitOfWork.Commit();
+                this.unitOfWork.Commit();
 
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("screenshot", "cover image is needed");
-                }
+                return RedirectToAction("Index");
+               
             }
 
             return View(bookViewModel);
