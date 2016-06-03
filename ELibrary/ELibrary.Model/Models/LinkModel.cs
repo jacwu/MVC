@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ELibrary.Model.Models
 {
-    class LinkModel
+    public class LinkModel
     {
         public string Href { get; set; }
         public string Rel { get; set; }

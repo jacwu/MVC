@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ELibrary.Model.Models
 {
-    class TagModel:TagAssociationModel
+    public class TagModel:TagAssociationModel
     {
         public IEnumerable<BookAssociationModel> Books { get; set; }
     }

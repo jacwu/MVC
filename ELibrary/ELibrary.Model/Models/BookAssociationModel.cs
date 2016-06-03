@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ELibrary.Model.Models
 {
-    class BookAssociationModel
+    public class BookAssociationModel
     {
         public ICollection<LinkModel> Links { get; set; }
         public string Title { get; set; }

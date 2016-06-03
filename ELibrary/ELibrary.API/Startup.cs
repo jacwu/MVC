@@ -18,6 +18,8 @@ namespace ELibrary.API
 
             WebApiConfig.Register(config);
 
+            AutofacConfig.Register(config);
+
             app.UseWebApi(config);
 
         }
