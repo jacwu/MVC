@@ -12,6 +12,9 @@ namespace ELibrary.Data
     {
         public static void Seed(ELibraryEntities context)
         {
+            if (context.Books.Count() > 0)
+                return;
+
             SeedTags(context);
             SeedBooks(context);
         }
