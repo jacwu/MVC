@@ -27,7 +27,7 @@ namespace ELibrary.Web.Controllers
         }
 
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int tagId)
         {
             
             return View(this.bookService.GetBooks());
@@ -62,7 +62,7 @@ namespace ELibrary.Web.Controllers
 
                 this.unitOfWork.Commit();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
                
             }
 

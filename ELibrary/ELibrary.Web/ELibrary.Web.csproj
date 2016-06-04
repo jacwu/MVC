@@ -143,6 +143,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\BookImg\cleancode.jpg" />
+    <Content Include="Content\BookImg\clrviacsharp.jpg" />
+    <Content Include="Content\BookImg\codecomplete.jpg" />
+    <Content Include="Content\BookImg\crackingcodeinterview.jpg" />
+    <Content Include="Content\BookImg\designoffreebsd.jpg" />
+    <Content Include="Content\BookImg\javascript_thegoodparts.jpg" />
+    <Content Include="Content\BookImg\learnpowershell.jpg" />
+    <Content Include="Content\BookImg\linuxprogramminginterface.jpg" />
+    <Content Include="Content\BookImg\networkprogrammingperl.jpg" />
+    <Content Include="Content\BookImg\understandlinuxkernel.jpg" />
+    <Content Include="Content\BookImg\webdesign.jpg" />
+    <Content Include="Content\BookImg\windowsinternal.jpg" />
+    <Content Include="Content\TagImg\application.png" />
+    <Content Include="Content\TagImg\csharp.png" />
+    <Content Include="Content\TagImg\data_structure.png" />
+    <Content Include="Content\TagImg\doNet.png" />
+    <Content Include="Content\TagImg\javascript.png" />
+    <Content Include="Content\TagImg\programming.png" />
+    <Content Include="Content\TagImg\software_design.png" />
+    <Content Include="Content\TagImg\unix.png" />
+    <Content Include="Content\TagImg\web_design.png" />
+    <Content Include="Content\TagImg\windows_server.png" />
     <Content Include="css\bootstrap.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -181,8 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\BookImg\" />
-    <Folder Include="Content\TagImg\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ELibrary.Data\ELibrary.Data.csproj">

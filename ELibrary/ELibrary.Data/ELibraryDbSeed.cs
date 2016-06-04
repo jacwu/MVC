@@ -25,7 +25,7 @@ namespace ELibrary.Data
                 new Tag { Name = "Software Design & Engineering", ImageName = "software_design.png" },
                 new Tag { Name = "Enterprise Applications", ImageName = "application.png" },
                 new Tag { Name = "Web Design", ImageName = "web_design.png" },
-                new Tag { Name = "JavaScript", ImageName = "javasrcipt.png" },
+                new Tag { Name = "JavaScript", ImageName = "javascript.png" },
                 new Tag { Name = "Data Structures", ImageName = "data_structure.png" },
                 new Tag { Name = "Windows Server", ImageName = "windows_server.png" },
                 new Tag { Name = "Unix", ImageName = "unix.png" }

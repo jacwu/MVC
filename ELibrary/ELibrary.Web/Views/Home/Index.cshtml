@@ -4,7 +4,12 @@
     ViewBag.Title = "Home";
 }
 
+<h2>@ViewBag.Title</h2>
+
 <div class="container">
+    <h3>ELibrary is an application to demo MVC, Web API and Angular</h3>
+    <br />
+
     @foreach(var tag in Model)
     {
         @Html.Partial("_PartialTag", tag);

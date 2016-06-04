@@ -4,16 +4,15 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm("Create", "Books", FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Book</h4>
-        <hr />
+        <h3>Create a New Book</h3>
+        <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2  col-md-offset-1" })
@@ -57,14 +56,14 @@
         <div class="form-group">        
             @Html.LabelFor(model => model.CoverImg, htmlAttributes: new { @class = "control-label col-md-2  col-md-offset-1" })
             <div class="col-md-6">            
-                @Html.TextBoxFor(model => model.CoverImg, new { @type = "file", @class = "btn btn-default form-control" })
+                @Html.TextBoxFor(model => model.CoverImg, new { @type = "file", @class = "btn form-control" })
                 @Html.ValidationMessageFor(model => model.CoverImg, "", new { @class = "text-danger" })
             </div>          
         </div>
         <div class="form-group">
             <div class="col-md-offset-4 col-md-6">
                 <input type="submit" value="Create" class="btn btn-primary" />
-                <input type="button" value="Cancel" onclick="location.href='@Url.Action("Index", "Books")'" class="btn btn-primary col-md-offset-1" />
+                <input type="button" value="Cancel" onclick="location.href='@Url.Action("Index", "Home")'" class="btn btn-primary col-md-offset-1" />
             </div>
         </div>
     </div>
