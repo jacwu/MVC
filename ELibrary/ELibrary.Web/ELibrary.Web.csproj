@@ -155,6 +155,8 @@
     <Content Include="Content\BookImg\understandlinuxkernel.jpg" />
     <Content Include="Content\BookImg\webdesign.jpg" />
     <Content Include="Content\BookImg\windowsinternal.jpg" />
+    <Content Include="Content\IntroImg\slide1.png" />
+    <Content Include="Content\IntroImg\slide2.png" />
     <Content Include="Content\TagImg\application.png" />
     <Content Include="Content\TagImg\csharp.png" />
     <Content Include="Content\TagImg\data_structure.png" />
@@ -194,6 +196,7 @@
     <Content Include="Views\Books\Create.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_PartialTag.cshtml" />
+    <Content Include="Views\Shared\_PartialIntro.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -203,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="fonts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ELibrary.Data\ELibrary.Data.csproj">
