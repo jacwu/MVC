@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace ELibrary.Web.Controllers
@@ -17,7 +18,7 @@ namespace ELibrary.Web.Controllers
         public async Task<ActionResult> Index()
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:1748/");
+            client.BaseAddress = new Uri(WebConfigurationManager.AppSettings["ELibraryAPIEndPoint"]);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
