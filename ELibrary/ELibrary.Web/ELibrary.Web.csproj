@@ -168,6 +168,8 @@
     <Content Include="Content\TagImg\web_design.png" />
     <Content Include="Content\TagImg\windows_server.png" />
     <Content Include="css\bootstrap.css" />
+    <Content Include="css\mysite.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery.js" />
@@ -197,6 +199,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_PartialTag.cshtml" />
     <Content Include="Views\Shared\_PartialIntro.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -206,7 +211,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="fonts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ELibrary.Data\ELibrary.Data.csproj">

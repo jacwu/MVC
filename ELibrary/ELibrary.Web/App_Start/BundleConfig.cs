@@ -11,13 +11,10 @@ namespace ELibrary.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
-                        "~/Scripts/jquery.js",
-                        "~/Scripts/jquery.validate.js",
-                        "~/Scripts/jquery.validate.unobtrusive.js",
-                        "~/Scripts/bootstrap.js"));
+                        "~/Scripts/*.js"));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
-                        "~/css/bootstrap.css"));
+                        "~/css/*.css"));
         }
     }
 
