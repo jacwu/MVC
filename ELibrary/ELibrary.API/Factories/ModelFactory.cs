@@ -13,13 +13,8 @@ namespace ELibrary.API.Factories
 {
     class ModelFactory : IModelFactory
     {
-        private IImageUrlGenerator _imageUrlGenerator;
-        private IImagePrefixProvider _imageUrlPrefixProvider;
-
-        public ModelFactory(IImageUrlGenerator imageUrlGenerator, IImagePrefixProvider imageUrlPrefixProvider)
+        public ModelFactory()
         {
-            _imageUrlGenerator = imageUrlGenerator;
-            _imageUrlPrefixProvider = imageUrlPrefixProvider;
         }
         LinkModel CreateLink(string href, string rel, string method= MethodConstant.GET)
         {
@@ -39,8 +34,7 @@ namespace ELibrary.API.Factories
                     CreateLink(urlHelper.Link(routeName, new { tagId = tag.Id }), RelConstant.SELF)
                 },
                 Name = tag.Name,
-                ImageName = tag.ImageName,
-                ImageUrl = _imageUrlGenerator.CreateTagImageUrl(_imageUrlPrefixProvider.TagImagePrefix(), tag.ImageName)
+                ImageName = tag.ImageName
             };
         }
 
@@ -54,7 +48,6 @@ namespace ELibrary.API.Factories
                 },
                 Name = tag.Name,
                 ImageName = tag.ImageName,
-                ImageUrl = _imageUrlGenerator.CreateTagImageUrl(_imageUrlPrefixProvider.TagImagePrefix(), tag.ImageName),
                 Books = tag.Books.Select(m=>CreateBookAssociationModel(urlHelper, "Books", m))
             };
         }
@@ -70,7 +63,8 @@ namespace ELibrary.API.Factories
                 Title = book.Title,
                 Description = book.Description,
                 ImageName = book.ImageName,
-                ImageUrl = _imageUrlGenerator.CreateBookImageUrl(_imageUrlPrefixProvider.BookImagePrefix(), book.ImageName)
+                AuthorName = book.AuthorName
+
             };
         }
     }

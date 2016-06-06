@@ -25,8 +25,6 @@ namespace ELibrary.API
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
             builder.RegisterType<ModelFactory>().As<IModelFactory>().InstancePerRequest();
-            builder.RegisterType<ImageUrlGenerator>().As<IImageUrlGenerator>().SingleInstance();
-            builder.RegisterType<ImagePrefixProvider>().As<IImagePrefixProvider>().SingleInstance();
 
             // Repositories
             builder.RegisterAssemblyTypes(typeof(BookRepository).Assembly)
