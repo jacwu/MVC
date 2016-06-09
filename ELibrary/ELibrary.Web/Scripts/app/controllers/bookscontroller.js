@@ -4,6 +4,7 @@
     angular.module("elibrary.web").controller("BooksController", ["$scope", "tagValue", "booksFactory", function ($scope, tagValue, booksFactory) {
 
         $scope.ready = false;
+        $scope.hasError = false;
 
         var booksUrl;
         $scope.tag = tagValue;
@@ -19,10 +20,20 @@
             booksFactory.getBooksByTag(booksUrl).then(function (books) {
                 $scope.books = books;
                 $scope.ready = true;
+                $scope.hasError = false;
 
             }, function () {
+                $scope.hasError = true;
+                $scope.ready = true;
+                $scope.errorMessage = "Failed to retrieve books list!";
             }
             );
+        }
+        else {
+            $scope.hasError = true;
+            $scope.ready = true;
+            $scope.errorMessage = "Failed to get books URL to API!";
+
         }
 
 
