@@ -30,8 +30,8 @@ namespace ELibrary.Web.Controllers
         public ActionResult Index(string tag)
         {
             var base64Bytes = System.Convert.FromBase64String(tag);
-            var tagUrl = System.Text.Encoding.UTF8.GetString(base64Bytes);
-            return View(this.bookService.GetBooks());
+            var tagJsonString = System.Text.Encoding.UTF8.GetString(base64Bytes);
+            return View((object)tagJsonString);
         }
 
         public ActionResult Create()
