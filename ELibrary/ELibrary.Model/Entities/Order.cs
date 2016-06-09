@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,8 @@ namespace ELibrary.Model.Entities
     {
         public int Id { get; set; }
         public DateTime OpenDate { get; set; }
-        public DateTime CloseDate { get; set; }
+        public DateTime? CloseDate { get; set; }
+        [Required]
         public string UserEmail { get; set; }
         public Book Book { get; set; }
     }
