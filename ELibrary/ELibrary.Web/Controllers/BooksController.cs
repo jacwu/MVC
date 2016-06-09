@@ -13,30 +13,29 @@ namespace ELibrary.Web.Controllers
 {
     public class BooksController : Controller
     {
-        private IBookService bookService;
-        private ITagService tagService;
-        private IUnitOfWork unitOfWork;
+        private IBookService _bookService;
+        private ITagService _tagService;
+        private IUnitOfWork _unitOfWork;
 
         public BooksController(IBookService bookService, 
             ITagService tagService,
             IUnitOfWork unitOfWork)
         {
-            this.bookService = bookService;
-            this.tagService = tagService;
-            this.unitOfWork = unitOfWork;
+            this._bookService = bookService;
+            this._tagService = tagService;
+            this._unitOfWork = unitOfWork;
         }
 
-        // GET: Home
         public ActionResult Index(string tag)
         {
             var base64Bytes = System.Convert.FromBase64String(tag);
             var tagUrl = System.Text.Encoding.UTF8.GetString(base64Bytes);
-            return View(this.bookService.GetBooks());
+            return View(this._bookService.GetBooks());
         }
 
         public ActionResult Create()
         {
-            var items = this.tagService.AllTags.Select(t => new SelectListItem
+            var items = this._tagService.AllTags.Select(t => new SelectListItem
             {
                 Value = t.Id.ToString(),
                 Text = t.Name
@@ -57,11 +56,11 @@ namespace ELibrary.Web.Controllers
                 bookViewModel.CoverImg.SaveAs(localPath);
 
                 Book book = Mapper.Map<Book>(bookViewModel);
-                book.Tags = bookViewModel.TagIds.SelectMany(id => this.tagService.AllTags.Where(tag => tag.Id == id)).ToList();                   
+                book.Tags = bookViewModel.TagIds.SelectMany(id => this._tagService.AllTags.Where(tag => tag.Id == id)).ToList();                   
                 book.ImageName = uploadedPic;
-                this.bookService.CreateBook(book);
+                this._bookService.CreateBook(book);
 
-                this.unitOfWork.Commit();
+                this._unitOfWork.Commit();
 
                 return RedirectToAction("Index", "Home");
                

@@ -17,6 +17,9 @@ namespace ELibrary.Web.Controllers
         // GET: Home
         public async Task<ActionResult> Index()
         {
+            ELibrary.Data.ELibraryEntities entity = new Data.ELibraryEntities();
+            entity.Books.ToList();
+
             var client = new HttpClient();
             client.BaseAddress = new Uri(WebConfigurationManager.AppSettings["ELibraryAPIEndPoint"]);
             client.DefaultRequestHeaders.Accept.Clear();

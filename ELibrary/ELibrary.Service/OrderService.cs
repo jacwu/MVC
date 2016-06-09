@@ -11,20 +11,37 @@ namespace ELibrary.Service
 {
     public interface IOrderService
     {
-        void CreateOrder(Order order);
+        Order BorrowBook(int bookid);
+        void ReturnBook(int orderid);
     }
     public class OrderService : IOrderService
     {
         private IOrderRepository orderRepository;
+        private IBookRepository bookRepository;
 
-        public OrderService(IOrderRepository orderRepository)
+        public OrderService(IOrderRepository orderRepository, IBookRepository bookRepository)
         {
             this.orderRepository = orderRepository;
+            this.bookRepository = bookRepository;
         }
 
-        public void CreateOrder(Order order)
+        public Order BorrowBook(int bookid)
         {
-            this.orderRepository.Add(order);
+            Book book = this.bookRepository.GetById(bookid);
+            Order order = new Order
+            {
+                Book = book,
+                OpenDate = DateTime.Now,
+                UserEmail = "testuser@contoso.com"
+            };
+            return this.orderRepository.Add(order);
+        }
+
+        public void ReturnBook(int orderid)
+        {
+            Order order = this.orderRepository.GetById(orderid);
+            this.orderRepository.Update(order);
+            order.CloseDate = DateTime.Now;
         }
     }
 }

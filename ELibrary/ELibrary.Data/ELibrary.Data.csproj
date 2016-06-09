@@ -58,21 +58,9 @@
     <Compile Include="Infra\IUnitOfWork.cs" />
     <Compile Include="Infra\RepositoryBase.cs" />
     <Compile Include="Infra\UnitOfWork.cs" />
-    <Compile Include="Migrations\201606011244228_initial.cs" />
-    <Compile Include="Migrations\201606011244228_initial.Designer.cs">
-      <DependentUpon>201606011244228_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606030114439_second.cs" />
-    <Compile Include="Migrations\201606030114439_second.Designer.cs">
-      <DependentUpon>201606030114439_second.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606030857053_third.cs" />
-    <Compile Include="Migrations\201606030857053_third.Designer.cs">
-      <DependentUpon>201606030857053_third.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606030943003_forth.cs" />
-    <Compile Include="Migrations\201606030943003_forth.Designer.cs">
-      <DependentUpon>201606030943003_forth.cs</DependentUpon>
+    <Compile Include="Migrations\201606090955111_initial.cs" />
+    <Compile Include="Migrations\201606090955111_initial.Designer.cs">
+      <DependentUpon>201606090955111_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,17 +79,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606011244228_initial.resx">
-      <DependentUpon>201606011244228_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606030114439_second.resx">
-      <DependentUpon>201606030114439_second.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606030857053_third.resx">
-      <DependentUpon>201606030857053_third.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606030943003_forth.resx">
-      <DependentUpon>201606030943003_forth.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606090955111_initial.resx">
+      <DependentUpon>201606090955111_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

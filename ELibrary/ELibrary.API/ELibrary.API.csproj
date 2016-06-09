@@ -129,6 +129,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Factories\IModelFactory.cs" />
     <Compile Include="Factories\ModelFactory.cs" />
