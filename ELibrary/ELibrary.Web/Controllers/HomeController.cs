@@ -31,7 +31,7 @@ namespace ELibrary.Web.Controllers
             if (response.IsSuccessStatusCode)
             {
                 var rspString = await response.Content.ReadAsStringAsync();             
-                var tags = JsonConvert.DeserializeObject<IEnumerable<TagAssociationModel>>(rspString);
+                var tags = JsonConvert.DeserializeObject<IEnumerable<TagBasicModel>>(rspString);
 
                 return View(tags);
             }

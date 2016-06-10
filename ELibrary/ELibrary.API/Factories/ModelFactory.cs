@@ -25,9 +25,9 @@ namespace ELibrary.API.Factories
                 Method = method
             };
         }
-        public TagAssociationModel CreateTagAssociationModel(UrlHelper urlHelper, string routeName, Tag tag)
+        public TagBasicModel CreateTagBasicModel(UrlHelper urlHelper, string routeName, Tag tag)
         {
-            return new TagAssociationModel
+            return new TagBasicModel
             {
                 Links = new List<LinkModel>
                 {
@@ -48,13 +48,13 @@ namespace ELibrary.API.Factories
                 },
                 Name = tag.Name,
                 ImageName = tag.ImageName,
-                Books = tag.Books.Select(m=>CreateBookAssociationModel(urlHelper, "Books", m))
+                Books = tag.Books.Select(m=>CreateBookBasicModel(urlHelper, "Books", m))
             };
         }
 
-        public BookAssociationModel CreateBookAssociationModel(UrlHelper urlHelper, string routeName, Book book)
+        public BookBasicModel CreateBookBasicModel(UrlHelper urlHelper, string routeName, Book book)
         {
-            return new BookAssociationModel
+            return new BookBasicModel
             {
                 Links = new List<LinkModel>
                 {
@@ -81,7 +81,7 @@ namespace ELibrary.API.Factories
                 Description = book.Description,
                 ImageName = book.ImageName,
                 AuthorName = book.AuthorName,
-                Tags = book.Tags.Select(m=>CreateTagAssociationModel(urlHelper, "Tags", m))
+                Tags = book.Tags.Select(m=>CreateTagBasicModel(urlHelper, "Tags", m))
             };
         }
     }

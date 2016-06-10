@@ -46,10 +46,10 @@
     <Compile Include="Entities\Book.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Tag.cs" />
-    <Compile Include="Models\BookAssociationModel.cs" />
+    <Compile Include="Models\BookBasicModel.cs" />
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\LinkModel.cs" />
-    <Compile Include="Models\TagAssociationModel.cs" />
+    <Compile Include="Models\TagBasicModel.cs" />
     <Compile Include="Models\TagModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

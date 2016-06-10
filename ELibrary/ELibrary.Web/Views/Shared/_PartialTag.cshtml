@@ -1,11 +1,5 @@
-﻿@model ELibrary.Model.Models.TagAssociationModel
+﻿@model ELibrary.Model.Models.TagBasicModel
 
-@*
-    @{
-        var urlBytes = System.Text.Encoding.UTF8.GetBytes(Model.Links.Where(x=>x.Rel.Equals("self")).FirstOrDefault().Href);
-        var urlBase64 = System.Convert.ToBase64String(urlBytes);
-    }
-*@
 
 @{
 

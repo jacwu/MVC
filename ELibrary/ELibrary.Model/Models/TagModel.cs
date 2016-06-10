@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ELibrary.Model.Models
 {
-    public class TagModel:TagAssociationModel
+    public class TagModel
     {
-        public IEnumerable<BookAssociationModel> Books { get; set; }
+        public ICollection<LinkModel> Links { get; set; }
+        public string Name { get; set; }
+        public string ImageName { get; set; }
+        public IEnumerable<BookBasicModel> Books { get; set; }
     }
 }

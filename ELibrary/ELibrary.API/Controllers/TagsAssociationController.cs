@@ -23,7 +23,7 @@ namespace ELibrary.API.Controllers
         {
             var results = _tagService.GetTagsForBook(bookId)
                 .ToList()
-                .Select(f => TheModelFactory.CreateTagAssociationModel(Url, "Tags", f));
+                .Select(f => TheModelFactory.CreateTagBasicModel(Url, "Tags", f));
 
             return Ok(results);
         }

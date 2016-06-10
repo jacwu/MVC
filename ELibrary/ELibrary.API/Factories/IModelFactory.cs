@@ -12,9 +12,9 @@ namespace ELibrary.API.Factories
 {
     public interface IModelFactory
     {
-        TagAssociationModel CreateTagAssociationModel(UrlHelper urlHelper, string routeName, Tag tag);
+        TagBasicModel CreateTagBasicModel(UrlHelper urlHelper, string routeName, Tag tag);
         TagModel CreateTagModel(UrlHelper urlHelper, string routeName, Tag tag);
-        BookAssociationModel CreateBookAssociationModel(UrlHelper urlHelper, string routeName, Book book);
+        BookBasicModel CreateBookBasicModel(UrlHelper urlHelper, string routeName, Book book);
         BookModel CreateBookModel(UrlHelper urlHelper, string routeName, Book book);
     }
 }

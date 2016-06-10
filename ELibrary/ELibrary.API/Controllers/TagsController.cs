@@ -24,7 +24,7 @@ namespace ELibrary.API.Controllers
         {
             
             var results = _tagService.AllTags.ToList()
-                .Select(t => TheModelFactory.CreateTagAssociationModel(Url, "Tags", t));
+                .Select(t => TheModelFactory.CreateTagBasicModel(Url, "Tags", t));
 
             return Ok(results);
         }
