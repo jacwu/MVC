@@ -1,5 +1,8 @@
 ﻿@model string
 
+@{
+    ViewBag.Title = "Books";
+}
 
 <div class="container" ng-app="elibrary.web" ng-controller="BooksController" ng-cloak>
 
@@ -33,16 +36,18 @@
 
 </div>
 
+@section scripts
+{
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/app/app.js"></script>
+    <script src="~/Scripts/app/controllers/bookscontroller.js"></script>
+    <script src="~/Scripts/app/services/communicationfactory.js"></script>
+    <script src="~/Scripts/app/directives/bookinfocard.js"></script>
 
-@Scripts.Render("~/Scripts/angular.min.js")
-@Scripts.Render("~/Scripts/app/app.js")
-@Scripts.Render("~/Scripts/app/controllers/bookscontroller.js")
-@Scripts.Render("~/Scripts/app/services/communicationfactory.js")
-@Scripts.Render("~/Scripts/app/directives/bookinfocard.js")
-
-<script>
-    angular.module("elibrary.web").value("tagValue", @Html.Raw(Model));
-</script>
+    <script>
+        angular.module("elibrary.web").value("tagValue", @Html.Raw(Model));
+    </script>
+}
 
 
 

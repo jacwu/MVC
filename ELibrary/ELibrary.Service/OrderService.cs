@@ -9,11 +9,6 @@ using System.Threading.Tasks;
 
 namespace ELibrary.Service
 {
-    public interface IOrderService
-    {
-        Order BorrowBook(int bookid);
-        void ReturnBook(int orderid);
-    }
     public class OrderService : IOrderService
     {
         private IOrderRepository orderRepository;

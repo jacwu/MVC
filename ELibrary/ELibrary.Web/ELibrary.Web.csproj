@@ -171,6 +171,7 @@
     <Content Include="css\mysite.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\controllers\bookscontroller.js" />
     <Content Include="Scripts\app\directives\bookinfocard.html" />

@@ -8,17 +8,6 @@ using ELibrary.Model.Entities;
 
 namespace ELibrary.Service
 {
-    public interface ITagService
-    {
-        void CreateTag(Tag tag);
-
-        Tag GetTag(int id);
-
-        IEnumerable<Tag> AllTags { get;}
-
-        IQueryable<Tag> GetTagsForBook(int bookId);
-    }
-
     public class TagService : ITagService
     {
         private IEnumerable<Tag> allTags;
@@ -34,7 +23,6 @@ namespace ELibrary.Service
                 return allTags;
             }
         }
-
 
         private ITagRepository tagRepository;
 
