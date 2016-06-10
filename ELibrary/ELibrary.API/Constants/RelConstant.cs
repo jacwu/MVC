@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ELibrary.Constant
+namespace ELibrary.Api.Constants
 {
     public sealed class RelConstant
     {
