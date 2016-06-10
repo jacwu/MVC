@@ -10,5 +10,6 @@ namespace ELibrary.Constant
         private RelConstant() {}
 
         public const string SELF = "self";
+        public const string TagsAssociation = "tagsassociation";
     }
 }

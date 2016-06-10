@@ -47,6 +47,7 @@
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Tag.cs" />
     <Compile Include="Models\BookAssociationModel.cs" />
+    <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\LinkModel.cs" />
     <Compile Include="Models\TagAssociationModel.cs" />
     <Compile Include="Models\TagModel.cs" />

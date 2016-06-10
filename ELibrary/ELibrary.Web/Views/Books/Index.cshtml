@@ -1,7 +1,7 @@
 ﻿@model string
 
 
-<div class="container" ng-app="elibrary.web" ng-controller="BooksController">
+<div class="container" ng-app="elibrary.web" ng-controller="BooksController" ng-cloak>
 
     <div class="panel panel-primary">
         <div class="panel-heading" style="font-size:large">
@@ -10,7 +10,7 @@
 
         <div class="panel-body">
 
-            <div class="alert alert-danger" role="alert" ng-show="hasError">
+            <div class="alert alert-danger" role="alert" ng-show="hasError" ng-cloak>
                 <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></i>
                 <i class="sr-only">Error:</i>
                 {{errorMessage}}
@@ -37,7 +37,7 @@
 @Scripts.Render("~/Scripts/angular.min.js")
 @Scripts.Render("~/Scripts/app/app.js")
 @Scripts.Render("~/Scripts/app/controllers/bookscontroller.js")
-@Scripts.Render("~/Scripts/app/services/booksfactory.js")
+@Scripts.Render("~/Scripts/app/services/communicationfactory.js")
 @Scripts.Render("~/Scripts/app/directives/bookinfocard.js")
 
 <script>

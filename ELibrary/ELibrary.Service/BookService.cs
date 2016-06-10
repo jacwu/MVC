@@ -14,7 +14,7 @@ namespace ELibrary.Service
         IEnumerable<Book> GetBooks();
         void CreateBook(Book book);
 
-        IEnumerable<Book> GetBookwithTag();
+
     }
     public class BookService: IBookService
     {
@@ -35,10 +35,6 @@ namespace ELibrary.Service
             this.bookRepository.Add(book);
         }
 
-        public IEnumerable<Book> GetBookwithTag()
-        {
-            return this.bookRepository.GetBookwithTag();
-        }
 
     }
 }

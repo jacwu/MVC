@@ -175,7 +175,7 @@
     <Content Include="Scripts\app\controllers\bookscontroller.js" />
     <Content Include="Scripts\app\directives\bookinfocard.html" />
     <Content Include="Scripts\app\directives\bookinfocard.js" />
-    <Content Include="Scripts\app\services\booksfactory.js" />
+    <Content Include="Scripts\app\services\communicationfactory.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -207,6 +207,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

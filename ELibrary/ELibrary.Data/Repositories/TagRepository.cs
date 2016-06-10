@@ -11,6 +11,7 @@ namespace ELibrary.Data
 {
     public interface ITagRepository : IRepository<Tag>
     {
+        IQueryable<Tag> GetTagsForBook(int bookId);
     }
 
     public class TagRepository : RepositoryBase<Tag>, ITagRepository
@@ -21,6 +22,13 @@ namespace ELibrary.Data
         public override Tag GetById(int id)
         {
             return DbContext.Tags.Include("Books").Where(f=>f.Id==id).FirstOrDefault(); 
+        }
+
+        public IQueryable<Tag> GetTagsForBook(int bookId)
+        {
+            return DbContext.Tags.Include("Books")
+                .Where(f=>f.Books.Any(m=>m.Id==bookId));
+
         }
     }
 }

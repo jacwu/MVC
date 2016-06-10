@@ -15,6 +15,8 @@ namespace ELibrary.Service
         Tag GetTag(int id);
 
         IEnumerable<Tag> AllTags { get;}
+
+        IQueryable<Tag> GetTagsForBook(int bookId);
     }
 
     public class TagService : ITagService
@@ -49,6 +51,11 @@ namespace ELibrary.Service
         public Tag GetTag(int id)
         {
             return tagRepository.GetById(id);
+        }
+
+        public IQueryable<Tag> GetTagsForBook(int bookId)
+        {
+            return tagRepository.GetTagsForBook(bookId);
         }
     }
 }

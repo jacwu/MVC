@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ELibrary.API.Factories;
+using ELibrary.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,14 +10,19 @@ using System.Web.Http;
 namespace ELibrary.API.Controllers
 {
     [Route("api/library/books/{bookId?}", Name ="Books")]
-    public class BooksController : ApiController
+    public class BooksController : BaseApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        private IBookService _bookService;
 
+        public BooksController(IBookService bookService, IModelFactory modelFactory):base(modelFactory)
+        {
+            _bookService = bookService;
+        }
+        public IHttpActionResult Get()
+        {
+            
+            return InternalServerError(new NotImplementedException());
+        }
 
     }
 }

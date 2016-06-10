@@ -58,13 +58,30 @@ namespace ELibrary.API.Factories
             {
                 Links = new List<LinkModel>
                 {
-                    CreateLink(urlHelper.Link(routeName, new {bookId = book.Id }), RelConstant.SELF)
+                    CreateLink(urlHelper.Link(routeName, new {bookId = book.Id }), RelConstant.SELF),
+                    CreateLink(urlHelper.Link("TagsAssociation", new { bookId = book.Id}), RelConstant.TagsAssociation)
                 },
                 Title = book.Title,
                 Description = book.Description,
                 ImageName = book.ImageName,
                 AuthorName = book.AuthorName
 
+            };
+        }
+
+        public BookModel CreateBookModel(UrlHelper urlHelper, string routeName, Book book)
+        {
+            return new BookModel
+            {
+                Links = new List<LinkModel>
+                {
+                    CreateLink(urlHelper.Link(routeName, new {bookId = book.Id }), RelConstant.SELF)
+                },
+                Title = book.Title,
+                Description = book.Description,
+                ImageName = book.ImageName,
+                AuthorName = book.AuthorName,
+                Tags = book.Tags.Select(m=>CreateTagAssociationModel(urlHelper, "Tags", m))
             };
         }
     }

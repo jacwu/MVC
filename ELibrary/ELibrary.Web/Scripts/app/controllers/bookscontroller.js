@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
 
-    angular.module("elibrary.web").controller("BooksController", ["$scope", "tagValue", "booksFactory", function ($scope, tagValue, booksFactory) {
+    angular.module("elibrary.web").controller("BooksController", ["$scope", "tagValue", "communicationFactory", function ($scope, tagValue, communicationFactory) {
 
         $scope.ready = false;
         $scope.hasError = false;
@@ -17,7 +17,7 @@
         }
 
         if (typeof (booksUrl) !== "undefined") {
-            booksFactory.getBooksByTag(booksUrl).then(function (books) {
+            communicationFactory.getBooksByTag(booksUrl).then(function (books) {
                 $scope.books = books;
                 $scope.ready = true;
                 $scope.hasError = false;

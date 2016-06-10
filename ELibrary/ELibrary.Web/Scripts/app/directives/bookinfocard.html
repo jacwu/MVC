@@ -16,8 +16,11 @@
                 <div>{{book.description}}</div>
         </div>
         <br>
-
-
+        <div ng-show="book.tags">
+                <span ng-repeat="tag in book.tags" class="btn btn-primary btn-primary-spacing" ng-click="navigateToTag(tag)">
+                    {{tag.name}}
+                </span>
+        </div>
     </div>
 
 </div>
