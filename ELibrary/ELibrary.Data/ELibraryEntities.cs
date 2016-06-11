@@ -13,10 +13,13 @@ namespace ELibrary.Data
     {
         static ELibraryEntities()
         {
+
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ELibraryEntities, Configuration>());
         }
         public ELibraryEntities() : base("ELibraryDBConnection")
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual void Commit()

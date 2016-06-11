@@ -12,6 +12,8 @@ namespace ELibrary.Data
     public interface ITagRepository : IRepository<Tag>
     {
         IQueryable<Tag> GetTagsForBook(int bookId);
+        Tag GetById(int id, bool availableOnly = true);
+
     }
 
     public class TagRepository : RepositoryBase<Tag>, ITagRepository
@@ -19,9 +21,33 @@ namespace ELibrary.Data
         public TagRepository(IDbFactory dbFactory)
             : base(dbFactory) { }
 
-        public override Tag GetById(int id)
+        public Tag GetById(int id, bool availableOnly = true)
         {
-            return DbContext.Tags.Include("Books").Where(f=>f.Id==id).FirstOrDefault(); 
+            if(availableOnly)
+            {
+                //https://blogs.msdn.microsoft.com/alexj/2009/10/12/tip-37-how-to-do-a-conditional-include/
+                //many to many relationship between tag and books
+                //http://stackoverflow.com/questions/16798796/ef-include-with-where-clause
+                //
+                var dbquery = DbContext.Tags.Where(f => f.Id == id).Select(
+                    b => new
+                    {
+                        b,
+                        Books = b.Books.Where(p => p.Orders.Where(o => o.CloseDate == null).Count() == 0)
+                    })
+                    .ToList();
+
+                foreach (var x in dbquery)
+                {
+                    x.b.Books = (ICollection<Book>)x.Books;
+                }
+
+                var result = dbquery.Select(x=>x.b).SingleOrDefault();
+
+                return result;
+            }
+            else
+                return DbContext.Tags.Include("Books").Where(f=>f.Id==id).FirstOrDefault(); 
         }
 
         public IQueryable<Tag> GetTagsForBook(int bookId)
