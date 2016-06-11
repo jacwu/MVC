@@ -24,31 +24,28 @@ namespace ELibrary.Web.Controllers
             this._bookService = bookService;
             this._tagService = tagService;
             this._unitOfWork = unitOfWork;
-        }
+        }        
 
-        public ActionResult Index(string tag)
-        {
-            var base64Bytes = System.Convert.FromBase64String(tag);
-            var tagJsonString = System.Text.Encoding.UTF8.GetString(base64Bytes);
-            return View((object)tagJsonString);
-        }
-
-        public ActionResult Create()
+        private IEnumerable<SelectListItem> GetTagOptions()
         {
             var items = this._tagService.AllTags.Select(t => new SelectListItem
             {
                 Value = t.Id.ToString(),
                 Text = t.Name
-            }).OrderBy(x=>x.Text);
-           
-            ViewBag.TagOptions = items;
+            }).OrderBy(x => x.Text);
+
+            return items;
+        }
+        public ActionResult Create()
+        {           
+            ViewBag.TagOptions = GetTagOptions();
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(BookViewModel bookViewModel)
-        {
+        {          
             if (ModelState.IsValid)
             {
                 string uploadedPic = System.IO.Path.GetFileName(bookViewModel.CoverImg.FileName);
@@ -66,9 +63,15 @@ namespace ELibrary.Web.Controllers
                
             }
 
+            ViewBag.TagOptions = GetTagOptions();
             return View(bookViewModel);
         }
 
-
+        public ActionResult Index(string tag)
+        {
+            var base64Bytes = System.Convert.FromBase64String(tag);
+            var tagJsonString = System.Text.Encoding.UTF8.GetString(base64Bytes);
+            return View((object)tagJsonString);
+        }
     }
 }

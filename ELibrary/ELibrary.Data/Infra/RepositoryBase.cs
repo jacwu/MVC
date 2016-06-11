@@ -10,7 +10,6 @@ namespace ELibrary.Data.Infra
 {
     public abstract class RepositoryBase<T> where T : class
     {
-        #region Properties
         private ELibraryEntities dataContext;
         private readonly IDbSet<T> dbSet;
 
@@ -24,7 +23,6 @@ namespace ELibrary.Data.Infra
         {
             get { return dataContext ?? (dataContext = DbFactory.Init()); }
         }
-        #endregion
 
         protected RepositoryBase(IDbFactory dbFactory)
         {
@@ -32,7 +30,6 @@ namespace ELibrary.Data.Infra
             dbSet = DbContext.Set<T>();
         }
 
-        #region Implementation
         public virtual T Add(T entity)
         {
             return dbSet.Add(entity);
@@ -75,8 +72,6 @@ namespace ELibrary.Data.Infra
         {
             return dbSet.Where(where).FirstOrDefault<T>();
         }
-
-        #endregion
     
     }
 }

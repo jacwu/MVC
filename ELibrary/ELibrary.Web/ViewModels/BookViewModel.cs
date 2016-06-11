@@ -17,7 +17,7 @@ namespace ELibrary.Web.ViewModels
         public string AuthorName { get; set; }
 
         [Required]
-        [StringLength(50, MinimumLength = 5)]
+        [StringLength(300, MinimumLength = 5)]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
