@@ -24,12 +24,6 @@ namespace ELibrary.Data
             base.SaveChanges();
         }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    //modelBuilder.Configurations.Add(new GadgetConfiguration());
-        //    //modelBuilder.Configurations.Add(new CategoryConfiguration());
-        //}
-
         public System.Data.Entity.DbSet<Book> Books { get; set; }
         public System.Data.Entity.DbSet<Order> Orders { get; set; }
         public System.Data.Entity.DbSet<Tag> Tags { get; set; }

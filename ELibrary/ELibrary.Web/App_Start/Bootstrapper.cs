@@ -20,10 +20,9 @@ namespace ELibrary.Web
     {
         public static void Run()
         {
-            SetAutofacContainer();
+            ConfigureAutofacContainer();
 
             ConfigAutoMapper();
-
         }
 
         private static void ConfigAutoMapper()
@@ -34,7 +33,7 @@ namespace ELibrary.Web
             });
         }
 
-        private static void SetAutofacContainer()
+        private static void ConfigureAutofacContainer()
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
@@ -45,6 +44,7 @@ namespace ELibrary.Web
             builder.RegisterAssemblyTypes(typeof(BookRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
+
             // Services
             builder.RegisterAssemblyTypes(typeof(BookService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))

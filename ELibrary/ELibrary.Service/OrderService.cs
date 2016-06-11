@@ -27,7 +27,7 @@ namespace ELibrary.Service
             {
                 Book = book,
                 OpenDate = DateTime.Now,
-                UserEmail = "testuser@contoso.com"
+                UserName = "TestUser"
             };
             return this.orderRepository.Add(order);
         }

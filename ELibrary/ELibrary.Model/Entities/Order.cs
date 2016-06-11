@@ -13,7 +13,7 @@ namespace ELibrary.Model.Entities
         public DateTime OpenDate { get; set; }
         public DateTime? CloseDate { get; set; }
         [Required]
-        public string UserEmail { get; set; }
+        public string UserName { get; set; }
         public Book Book { get; set; }
     }
 }

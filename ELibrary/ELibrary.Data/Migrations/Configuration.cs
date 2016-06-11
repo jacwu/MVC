@@ -26,7 +26,6 @@ namespace ELibrary.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
             ELibraryDbSeed.Seed(context);
         }
     }

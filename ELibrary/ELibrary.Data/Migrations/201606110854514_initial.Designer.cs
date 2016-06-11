@@ -13,7 +13,7 @@ namespace ELibrary.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201606090955111_initial"; }
+            get { return "201606110854514_initial"; }
         }
         
         string IMigrationMetadata.Source

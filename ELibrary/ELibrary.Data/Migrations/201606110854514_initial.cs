@@ -25,9 +25,9 @@ namespace ELibrary.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        OpenDate = c.DateTime(nullable: false, defaultValueSql:"GetDate()"),
+                        OpenDate = c.DateTime(nullable: false, defaultValueSql: "GetDate()"),
                         CloseDate = c.DateTime(),
-                        UserEmail = c.String(nullable: false),
+                        UserName = c.String(nullable: false),
                         Book_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
