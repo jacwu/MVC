@@ -49,6 +49,7 @@
     <Compile Include="Models\BookBasicModel.cs" />
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\LinkModel.cs" />
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\TagBasicModel.cs" />
     <Compile Include="Models\TagModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

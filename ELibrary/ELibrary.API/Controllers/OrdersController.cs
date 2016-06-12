@@ -1,4 +1,5 @@
-﻿using ELibrary.API.Factories;
+﻿using ELibrary.Api.Constants;
+using ELibrary.API.Factories;
 using ELibrary.Data.Infra;
 using ELibrary.Model.Entities;
 using ELibrary.Service;
@@ -11,7 +12,7 @@ using System.Web.Http;
 
 namespace ELibrary.API.Controllers
 {
-    [Route("api/library/Orders/{orderid?}", Name = "Orders")]
+    [Route("api/library/orders/{orderid?}", Name="Orders")]
     public class OrdersController :  BaseApiController
     {
         private IOrderService _orderService;
@@ -25,21 +26,39 @@ namespace ELibrary.API.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpPost]
-        [Route("api/library/Books/{bookid}/Borrow")]
-        public IHttpActionResult BorrowBook(int bookid)
+        public IHttpActionResult Get()
         {
-            Order order = _orderService.BorrowBook(bookid);
+
+            return InternalServerError(new NotImplementedException());
+        }
+
+        [HttpPost]
+        [Route("api/library/books/{bookid}/borrow", Name = "BorrowBook")]
+        public IHttpActionResult BorrowBook(int bookId)
+        {
+            //TODO: Need to remove it when we add authentication feature
+            Order order = _orderService.BorrowBook(bookId, "testuser");
             _unitOfWork.Commit();
 
-            return Ok(order);
+            var result = TheModelFactory.CreateOrderModel(Url, "Orders", order);
+
+            string location = string.Empty;
+            foreach (var link in result.Links)
+            {
+                if (link.Rel.Equals(RelConstant.SELF))
+                {
+                    location = link.Href;
+                }
+            }
+
+            return Created(location, result);
         }
 
         [HttpPut]
-        [Route("api/library/Orders/{orderid}/return/")]
-        public IHttpActionResult ReturnBook(int orderid)
+        [Route("api/library/orders/{orderid}/return/", Name = "ReturnBook")]
+        public IHttpActionResult ReturnBook(int orderId)
         {
-            _orderService.ReturnBook(orderid);
+            _orderService.ReturnBook(orderId);
             _unitOfWork.Commit();
 
             return Ok();

@@ -5,7 +5,8 @@
         return {
             scope: {
                 book: "=",
-                initialCollapsed: "@collapsed"
+                initialCollapsed: "@collapsed",
+                notifyParent: "&borrow"
             },
             templateUrl: "Scripts/app/directives/bookinfocard.html",
             controller: ["$scope", "communicationFactory", BookInfoCardController]
@@ -42,6 +43,10 @@
             var hashUrl = btoa(JSON.stringify(tag));
             window.location = "/Books?tag=" + hashUrl;
         };
+
+        $scope.borrowBook = function () {
+            $scope.notifyParent();
+        }
     }
 
 }());

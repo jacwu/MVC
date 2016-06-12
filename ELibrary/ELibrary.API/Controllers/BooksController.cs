@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace ELibrary.API.Controllers
 {
-    [Route("api/library/books/{bookId?}", Name ="Books")]
+    [Route("api/library/books/{bookid?}", Name ="Books")]
     public class BooksController : BaseApiController
     {
         private IBookService _bookService;

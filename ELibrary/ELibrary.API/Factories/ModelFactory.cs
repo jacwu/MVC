@@ -16,7 +16,7 @@ namespace ELibrary.API.Factories
         public ModelFactory()
         {
         }
-        LinkModel CreateLink(string href, string rel, string method= MethodConstant.GET)
+        LinkModel CreateLink(string href, string rel, string method = MethodConstant.GET)
         {
             return new LinkModel
             {
@@ -48,7 +48,7 @@ namespace ELibrary.API.Factories
                 },
                 Name = tag.Name,
                 ImageName = tag.ImageName,
-                Books = tag.Books.Select(m=>CreateBookBasicModel(urlHelper, "Books", m))
+                Books = tag.Books.Select(m => CreateBookBasicModel(urlHelper, "Books", m))
             };
         }
 
@@ -58,8 +58,9 @@ namespace ELibrary.API.Factories
             {
                 Links = new List<LinkModel>
                 {
-                    // CreateLink(urlHelper.Link(routeName, new {bookId = book.Id }), RelConstant.SELF),
-                    CreateLink(urlHelper.Link("TagsAssociation", new { bookId = book.Id}), RelConstant.TagsAssociation)
+                    CreateLink(urlHelper.Link(routeName, new {bookId = book.Id }), RelConstant.SELF),
+                    CreateLink(urlHelper.Link("TagsAssociation", new { bookId = book.Id}), RelConstant.TagsAssociation),
+                    CreateLink(urlHelper.Link("BorrowBook", new { bookId = book.Id}), RelConstant.BorrowBook, "POST")
                 },
                 Title = book.Title,
                 Description = book.Description,
@@ -75,13 +76,30 @@ namespace ELibrary.API.Factories
             {
                 Links = new List<LinkModel>
                 {
-                    CreateLink(urlHelper.Link(routeName, new {bookId = book.Id }), RelConstant.SELF)
+                    CreateLink(urlHelper.Link(routeName, new {bookId = book.Id }), RelConstant.SELF),
+                    CreateLink(urlHelper.Link("TagsAssociation", new { bookId = book.Id}), RelConstant.TagsAssociation),
+                    CreateLink(urlHelper.Link("BorrowBook", new { bookId = book.Id}), RelConstant.BorrowBook, "POST")
                 },
                 Title = book.Title,
                 Description = book.Description,
                 ImageName = book.ImageName,
                 AuthorName = book.AuthorName,
-                Tags = book.Tags.Select(m=>CreateTagBasicModel(urlHelper, "Tags", m))
+                Tags = book.Tags.Select(m => CreateTagBasicModel(urlHelper, "Tags", m))
+            };
+        }
+
+        public OrderModel CreateOrderModel(UrlHelper urlHelper, string routeName, Order order)
+        {
+            return new OrderModel
+            {
+                Links = new List<LinkModel>
+                {
+                    CreateLink(urlHelper.Link(routeName, new { orderId = order.Id}), RelConstant.SELF)
+                },
+                OpenDate = order.OpenDate,
+                CloseDate = order.CloseDate,
+                UserName = order.UserName,
+                Book = CreateBookBasicModel(urlHelper, "Books", order.Book)
             };
         }
     }

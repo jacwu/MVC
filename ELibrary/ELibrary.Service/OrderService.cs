@@ -20,14 +20,14 @@ namespace ELibrary.Service
             this.bookRepository = bookRepository;
         }
 
-        public Order BorrowBook(int bookid)
+        public Order BorrowBook(int bookid, string userName)
         {
             Book book = this.bookRepository.GetById(bookid);
             Order order = new Order
             {
                 Book = book,
                 OpenDate = DateTime.Now,
-                UserName = "TestUser"
+                UserName = userName
             };
             return this.orderRepository.Add(order);
         }

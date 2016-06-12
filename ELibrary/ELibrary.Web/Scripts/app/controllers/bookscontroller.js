@@ -36,6 +36,36 @@
 
         }
 
+        $scope.borrowBook = function (book) {
+            var bookBorrowUrl;
+
+            for (var i = 0; i < book.links.length; i++) {
+                if (book.links[i].rel === "borrowbook") {
+                    bookBorrowUrl = book.links[i].href;
+                    break;
+                }
+            }
+
+            if (typeof (bookBorrowUrl) !== "undefined") {
+                communicationFactory.borrowBook(bookBorrowUrl).then(function () {
+                    $scope.ready = true;
+                    $scope.hasError = false;
+
+                    var idx = $scope.books.indexOf(book);
+
+                    if (idx > -1)
+                        $scope.books.splice(idx, 1);
+
+                }, function () {
+                    $scope.hasError = true;
+                    $scope.ready = true;
+                    $scope.errorMessage = "Failed to borrow book!";
+                }
+                );
+            }
+
+        };
+
 
     }]);
 

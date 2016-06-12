@@ -9,7 +9,7 @@ namespace ELibrary.Service
 {
     public interface IOrderService
     {
-        Order BorrowBook(int bookid);
+        Order BorrowBook(int bookid, string userName);
         void ReturnBook(int orderid);
     }
 }

@@ -16,6 +16,10 @@
                     .then(function (r) {
                         return r.data;
                     });
+            },
+
+            borrowBook: function (bookBorrowUrl) {
+                return $http.post(bookBorrowUrl);
             }
 
         };

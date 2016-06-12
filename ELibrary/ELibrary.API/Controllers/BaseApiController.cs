@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Principal;
 using System.Web.Http;
 
 namespace ELibrary.API.Controllers
@@ -23,6 +24,8 @@ namespace ELibrary.API.Controllers
         public BaseApiController(IModelFactory modelFactory)
         {
             _modelFactory = modelFactory;
+
+            //User = new GenericPrincipal(new GenericIdentity("testuser"), null);
         }
     }
 }

@@ -16,5 +16,6 @@ namespace ELibrary.API.Factories
         TagModel CreateTagModel(UrlHelper urlHelper, string routeName, Tag tag);
         BookBasicModel CreateBookBasicModel(UrlHelper urlHelper, string routeName, Book book);
         BookModel CreateBookModel(UrlHelper urlHelper, string routeName, Book book);
+        OrderModel CreateOrderModel(UrlHelper urlHelper, string routeName, Order order);
     }
 }
