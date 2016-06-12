@@ -38,5 +38,10 @@ namespace ELibrary.Service
             this.orderRepository.Update(order);
             order.CloseDate = DateTime.Now;
         }
+
+        public IQueryable<Order> GetOpenOrders(string userName)
+        {
+            return orderRepository.GetOpenOrders(userName);
+        }
     }
 }

@@ -28,8 +28,12 @@ namespace ELibrary.API.Controllers
 
         public IHttpActionResult Get()
         {
+            //TODO: Need to remove it when we add authentication feature
+            var results = _orderService.GetOpenOrders("testuser")
+                .ToList()
+                .Select(f=>TheModelFactory.CreateOrderModel(Url, "Orders", f));
 
-            return InternalServerError(new NotImplementedException());
+            return Ok(results);
         }
 
         [HttpPost]

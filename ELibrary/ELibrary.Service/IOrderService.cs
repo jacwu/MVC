@@ -11,5 +11,6 @@ namespace ELibrary.Service
     {
         Order BorrowBook(int bookid, string userName);
         void ReturnBook(int orderid);
+        IQueryable<Order> GetOpenOrders(string userName);
     }
 }

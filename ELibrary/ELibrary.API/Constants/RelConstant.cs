@@ -12,5 +12,6 @@ namespace ELibrary.Api.Constants
         public const string SELF = "self";
         public const string TagsAssociation = "tagsassociation";
         public const string BorrowBook = "borrowbook";
+        public const string ReturnBook = "returnbook";
     }
 }
