@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace ELibrary.Api.Constants
+﻿namespace ELibrary.Api.Constants
 {
     public sealed class RelConstant
     {

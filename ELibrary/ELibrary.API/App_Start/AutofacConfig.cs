@@ -4,11 +4,8 @@ using ELibrary.API.Factories;
 using ELibrary.Data.Infra;
 using ELibrary.Data.Repositories;
 using ELibrary.Service;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Http;
 
 namespace ELibrary.API

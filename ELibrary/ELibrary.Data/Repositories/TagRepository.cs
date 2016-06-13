@@ -34,8 +34,7 @@ namespace ELibrary.Data
                     {
                         b,
                         Books = b.Books.Where(p => p.Orders.Where(o => o.CloseDate == null).Count() == 0)
-                    })
-                    .ToList();
+                    });
 
                 foreach (var x in dbquery)
                 {

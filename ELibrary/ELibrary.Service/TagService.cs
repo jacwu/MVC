@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ELibrary.Data;
 using ELibrary.Model.Entities;
 
@@ -31,10 +28,6 @@ namespace ELibrary.Service
             this.tagRepository = tagRepository;
         }
 
-        public void CreateTag(Tag tag)
-        {
-            this.tagRepository.Add(tag);
-        }
 
         public Tag GetTag(int id)
         {
