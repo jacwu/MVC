@@ -6,9 +6,8 @@ namespace ELibrary.Service
 {
     public interface ITagService
     {
-
         Tag GetTag(int id);
-        IQueryable<Tag> GetTagsForBook(int bookId);
+        IEnumerable<Tag> GetTagsForBook(int bookId);
         IEnumerable<Tag> AllTags { get; }
     }
 }

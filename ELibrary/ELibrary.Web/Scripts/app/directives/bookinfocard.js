@@ -25,12 +25,9 @@
                         break;
                     }
                 }
-
                 if (typeof (tagsAssociationUrl) !== "undefined") {
                     communicationFactory.getTagsByBook(tagsAssociationUrl).then(function (tags) {
                         $scope.book.tags = tags;
-
-
                     });
                 }
             }

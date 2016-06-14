@@ -11,7 +11,7 @@ namespace ELibrary.Data
 {
     public interface ITagRepository : IRepository<Tag>
     {
-        IQueryable<Tag> GetTagsForBook(int bookId);
+        IEnumerable<Tag> GetTagsForBook(int bookId);
         Tag GetById(int id, bool availableOnly = true);
 
     }
@@ -25,10 +25,6 @@ namespace ELibrary.Data
         {
             if(availableOnly)
             {
-                //https://blogs.msdn.microsoft.com/alexj/2009/10/12/tip-37-how-to-do-a-conditional-include/
-                //many to many relationship between tag and books
-                //http://stackoverflow.com/questions/16798796/ef-include-with-where-clause
-                //
                 var dbquery = DbContext.Tags.Where(f => f.Id == id).Select(
                     b => new
                     {
@@ -46,14 +42,12 @@ namespace ELibrary.Data
                 return result;
             }
             else
-                return DbContext.Tags.Include("Books").Where(f=>f.Id==id).FirstOrDefault(); 
+                return DbContext.Tags.Include("Books").Where(t=>t.Id==id).FirstOrDefault(); 
         }
 
-        public IQueryable<Tag> GetTagsForBook(int bookId)
+        public IEnumerable<Tag> GetTagsForBook(int bookId)
         {
-            return DbContext.Tags.Include("Books")
-                .Where(f=>f.Books.Any(m=>m.Id==bookId));
-
+            return DbContext.Books.Include("Tags").SingleOrDefault(b => b.Id == bookId).Tags;
         }
     }
 }

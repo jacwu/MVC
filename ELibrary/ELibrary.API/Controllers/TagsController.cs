@@ -18,8 +18,7 @@ namespace ELibrary.API.Controllers
         public IHttpActionResult Get()
         {
             
-            var results = _tagService.AllTags.ToList()
-                .Select(t => TheModelFactory.CreateTagBasicModel(Url, "Tags", t));
+            var results = _tagService.AllTags.Select(t => TheModelFactory.CreateTagBasicModel(Url, "Tags", t));
 
             return Ok(results);
         }

@@ -27,7 +27,7 @@ namespace ELibrary.API.Controllers
             //TODO: Need to remove it when we add authentication feature
             var results = _orderService.GetOpenOrders("testuser")
                 .ToList()
-                .Select(f=>TheModelFactory.CreateOrderModel(Url, "Orders", f));
+                .Select(o=>TheModelFactory.CreateOrderModel(Url, "Orders", o));
 
             return Ok(results);
         }

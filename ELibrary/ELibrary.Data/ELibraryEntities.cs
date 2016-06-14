@@ -18,8 +18,6 @@ namespace ELibrary.Data
         }
         public ELibraryEntities() : base("ELibraryDBConnection")
         {
-            this.Configuration.LazyLoadingEnabled = false;
-            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual void Commit()

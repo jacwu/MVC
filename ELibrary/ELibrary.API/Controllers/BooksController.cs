@@ -25,7 +25,7 @@ namespace ELibrary.API.Controllers
         {
             var results = _tagService.GetTagsForBook(bookId)
                 .ToList()
-                .Select(f => TheModelFactory.CreateTagBasicModel(Url, "Tags", f));
+                .Select(t => TheModelFactory.CreateTagBasicModel(Url, "Tags", t));
 
             return Ok(results);
         }

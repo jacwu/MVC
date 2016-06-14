@@ -34,7 +34,7 @@ namespace ELibrary.Service
             return tagRepository.GetById(id);
         }
 
-        public IQueryable<Tag> GetTagsForBook(int bookId)
+        public IEnumerable<Tag> GetTagsForBook(int bookId)
         {
             return tagRepository.GetTagsForBook(bookId);
         }
