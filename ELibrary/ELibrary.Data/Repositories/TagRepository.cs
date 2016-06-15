@@ -12,7 +12,7 @@ namespace ELibrary.Data
     public interface ITagRepository : IRepository<Tag>
     {
         IEnumerable<Tag> GetTagsForBook(int bookId);
-        Tag GetById(int id, bool availableOnly = true);
+        Tag GetTagWithBooks(int id, bool availableOnly = true);
 
     }
 
@@ -21,28 +21,25 @@ namespace ELibrary.Data
         public TagRepository(IDbFactory dbFactory)
             : base(dbFactory) { }
 
-        public Tag GetById(int id, bool availableOnly = true)
+        public Tag GetTagWithBooks(int id, bool availableBookOnly = true)
         {
-            if(availableOnly)
+            if (availableBookOnly)
             {
-                var dbquery = DbContext.Tags.Where(f => f.Id == id).Select(
-                    b => new
+                var dbquery = DbContext.Tags.Where(t => t.Id == id).Select(
+                    t => new
                     {
-                        b,
-                        Books = b.Books.Where(p => p.Orders.Where(o => o.CloseDate == null).Count() == 0)
-                    });
+                        t,
+                        Books = t.Books.Where(b => b.Orders.Where(o => o.CloseDate == null).Count() == 0)
+                    }).SingleOrDefault();
 
-                foreach (var x in dbquery)
-                {
-                    x.b.Books = (ICollection<Book>)x.Books;
-                }
+                dbquery.t.Books = dbquery.Books as ICollection<Book>;
 
-                var result = dbquery.Select(x=>x.b).SingleOrDefault();
-
-                return result;
+                return dbquery.t;
             }
             else
-                return DbContext.Tags.Include("Books").Where(t=>t.Id==id).FirstOrDefault(); 
+            {
+                return DbContext.Tags.Include("Books").Where(t => t.Id == id).FirstOrDefault();
+            }
         }
 
         public IEnumerable<Tag> GetTagsForBook(int bookId)
